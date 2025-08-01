@@ -36,6 +36,7 @@ public class BirdController : MonoBehaviour
 
     private IEnumerator MoveInDirection(SongDirection[] dir)
     {
+        yield return new WaitForSeconds(2f); // Đợi một chút trước khi bắt đầu di chuyển
         for (int i = 0; i < dir.Length; i++)
         {
             Vector3 dirVec = DirectionToVector(dir[i]);
@@ -65,6 +66,13 @@ public class BirdController : MonoBehaviour
     public void StopMovement()
     {
         this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        this.gameObject.GetComponent<BirdController>().enabled = false;
+    }
+
+    public void MakeMovement()
+    {
+        this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        this.gameObject.GetComponent<BirdController>().enabled = true;
     }
 
     private Vector3 DirectionToVector(SongDirection dir)

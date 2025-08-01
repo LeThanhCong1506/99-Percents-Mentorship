@@ -75,7 +75,6 @@ namespace Game.Scripts.Gameplay
                 Debug.Log(_jumpCount + " " + _maxJumpCount);
             }
             //debug isground and iswin
-            Debug.Log("IsGrounded: " + _isGrounded + ", IsWin: " + GameManager.Instance.IsWin);
             if (GameManager.Instance.IsWin && isSignaling)
             {
                 StartCoroutine(DoubleJump());
@@ -84,7 +83,7 @@ namespace Game.Scripts.Gameplay
 
         public IEnumerator DoubleJump()
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.5f);
             if (!_isGrounded)
             {
                 _maxJumpCount++; // Cho phép nhảy đôi
@@ -143,28 +142,30 @@ namespace Game.Scripts.Gameplay
                 // Có thể kiểm tra thêm nếu cần, ví dụ: tag hoặc component
                 if (hit.CompareTag("Enemy"))
                 {
+                    if (GameManager.Instance.IsWin && isSignaling)
+                    {
+                        hit.gameObject.GetComponent<EnemyController>().StopMovement();
+                        isSignaling = false;
+                        Debug.Log("Enemy signaling stopped: " + hit.gameObject.name);
+                    }
+                    else
                     if (!isSignaling)
                     {
                         Debug.Log("Enemy detected: " + hit.gameObject.name);
                         hit.gameObject.GetComponent<EnemyController>().OnSignalDirection += GameManager.Instance.OnEnemySignal;
                         isSignaling = hit.gameObject.GetComponent<EnemyController>().SignalRandomDirection();
                     }
-                    else
-                    {
-                        hit.gameObject.GetComponent<EnemyController>().StopMovement();
-                        isSignaling = false;
-                        Debug.Log("Enemy signaling stopped: " + hit.gameObject.name);
-                    }
+
                 }
                 else if (hit.CompareTag("Bird"))
                 {
-                    if (GameManager.Instance.IsWin)
+                    //debug is win and signaling
+                    if (GameManager.Instance.IsWin && isSignaling)
                     {
                         Debug.Log("isWin: " + GameManager.Instance.IsWin);
                         if (hit.gameObject.GetComponent<BirdController>() != null)
                             hit.gameObject.GetComponent<BirdController>().FlyIntoPlayer();
                         hit.gameObject.GetComponent<BirdController>().StopMovement();
-                        isSignaling = false;
                     }
                     else
                     if (!isSignaling)

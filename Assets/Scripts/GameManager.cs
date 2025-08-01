@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerController player;
     [SerializeField] private SongWheelController songWheelController;
-    private float inputTimeout = 5f;
+    private float inputTimeout = 10f;
     private bool awaitingInput = false;
     private SongDirection[] targetDir;
     private int _userPositivePoint = 3;
@@ -79,23 +79,27 @@ public class GameManager : MonoBehaviour
         awaitingInput = false;
         bool correct = false;
         //check sliceindex có bằng targetDir không, nếu có 1 cái sai thì trả về false luôn
-        if (sliceIndex.Length != targetDir.Length)
+        if (sliceIndex.Length == 2)
         {
-            correct = false;
-        }
-        else
-        {
-            correct = true;
-            for (int i = 0; i < sliceIndex.Length; i++)
+            if (sliceIndex.Length != targetDir.Length)
             {
-                if (sliceIndex[i] != (int)targetDir[i])
+                correct = false;
+            }
+            else
+            {
+                correct = true;
+                for (int i = 0; i < sliceIndex.Length; i++)
                 {
-                    correct = false;
-                    break;
+                    Debug.Log($"Slice {sliceIndex[i]} và hướng {(int)targetDir[i]}");
+                    if (sliceIndex[i] != (int)targetDir[i])
+                    {
+                        correct = false;
+                        break;
+                    }
                 }
             }
+            OnPlayerResult(correct);
         }
-        OnPlayerResult(correct);
     }
 
     private void OnPlayerResult(bool success)
@@ -109,6 +113,7 @@ public class GameManager : MonoBehaviour
         else
         {
             IsWin = false;
+            player.isSignaling = false; // Reset trạng thái signaling của player
             Debug.Log("Sai! Bị trượt.");
             // TODO: xử lý thất bại (giảm HP, replay…)
         }

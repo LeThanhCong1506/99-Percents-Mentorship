@@ -122,11 +122,18 @@ public class EnemyController : MonoBehaviour
     public void StopMovement()
     {
         this.gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        this.gameObject.GetComponent<EnemyController>().enabled = false;
+    }
+
+    public void MakeMovement()
+    {
+        this.gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        this.gameObject.GetComponent<EnemyController>().enabled = true;
     }
 
     private IEnumerator MoveInDirection(SongDirection[] dir)
     {
-        yield return new WaitForSeconds(1f); // Đợi một chút trước khi bắt đầu di chuyển
+        yield return new WaitForSeconds(2f); // Đợi một chút trước khi bắt đầu di chuyển
         for (int i = 0; i < dir.Length; i++)
         {
             Vector3 dirVec = DirectionToVector(dir[i]);

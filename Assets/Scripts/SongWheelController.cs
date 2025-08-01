@@ -51,11 +51,6 @@ public class SongWheelController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 selectSlices.Add(currentSlice);
-                //loop debug
-                for (int i = 0; i < selectSlices.Count; i++)
-                {
-                    Debug.Log("SongWheelController: ActivateWheel - selectSlices[" + i + "]: " + selectSlices[i]);
-                }
                 if (gameManager != null && selectSlices.Count == 2)
                 {
                     gameManager.OnPlayerSelect(selectSlices.ToArray());
