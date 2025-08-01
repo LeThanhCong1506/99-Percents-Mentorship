@@ -10,6 +10,7 @@ namespace Game.Scripts.Gameplay
         private static readonly int IsJump = Animator.StringToHash("isJump");
         private static readonly int IsRun = Animator.StringToHash("isRun");
 
+
         public float moveSpeed = 5f;
         public float jumpForce = 10f;
         public Transform groundCheck;
@@ -22,8 +23,10 @@ namespace Game.Scripts.Gameplay
 
         private bool _isGrounded;
         private int _jumpCount = 0;
-
+        private Vector2 _lastMoveInput = Vector2.right;
         private int _maxJumpCount = 0;
+
+     
 
         // invicible
         [SerializeField] private GameObject visualObject;
@@ -39,7 +42,9 @@ namespace Game.Scripts.Gameplay
         {
             DetectEnemy();
             CheckGround();
+          
             animator.SetBool(IsJump, !_isGrounded);
+           
         }
 
         private void CheckGround()
@@ -48,13 +53,20 @@ namespace Game.Scripts.Gameplay
             if (_isGrounded)
             {
                 _jumpCount = 0;
+                
             }
+
+
         }
 
 
         public void Move(Vector2 input)
         {
             rb.linearVelocity = new Vector2(input.x * moveSpeed, rb.linearVelocity.y);
+
+
+            if (input != Vector2.zero)
+                _lastMoveInput = input.normalized;
 
             bool check = Mathf.Abs(input.x) > 0.01f && _isGrounded;
 
@@ -64,6 +76,7 @@ namespace Game.Scripts.Gameplay
             {
                 transform.localScale = new Vector3(Mathf.Sign(input.x), 1, 1);
             }
+
         }
 
         public void Jump()
@@ -212,5 +225,11 @@ namespace Game.Scripts.Gameplay
                 StartInvincibility();
             }
         }
+
+    
+       
+
     }
+
+
 }
