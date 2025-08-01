@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Spikes_5
+  m_Name: GigiHouse_0
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 6723963429988506304, guid: 9d227796d440d2149b609c37224ab799, type: 3}
+  m_Sprite: {fileID: 6517928144971816075, guid: c26447608aa057a4f8d51874c8c13e1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
