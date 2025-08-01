@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db01cb2f8ce0ad64f8d45769c20a0f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2738988328621163954, guid: 907f81a8675c83f4aa0b3b5214bb3058, type: 3}
+  player: {fileID: 0}
+  songWheelController: {fileID: 0}
+  IsWin: 0

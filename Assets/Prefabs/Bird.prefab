@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1595578548967237239}
   - component: {fileID: 5104600208690460459}
   - component: {fileID: 59408760269452253}
+  - component: {fileID: 248151130018977009}
   m_Layer: 6
   m_Name: Bird
   m_TagString: Bird
@@ -141,3 +142,25 @@ MonoBehaviour:
   moveDuration: 0.5
   flySpeed: 5
   stayDuration: 10
+--- !u!95 &248151130018977009
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654380842053291657}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 445fbfdd90eb36f4887f85b5cfa37cf3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

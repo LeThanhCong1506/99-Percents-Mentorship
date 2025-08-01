@@ -9,9 +9,9 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     [Header("Main Menu Objects")]
-    [SerializeField] private GameObject _loadingBarObject;
-    [SerializeField] private GameObject[] _objectToHide ;
-    [SerializeField] private Image _loadingBar;
+    private GameObject _loadingBarObject;
+    private GameObject[] _objectToHide ;
+    private Image _loadingBar;
 
     [Header("Scene to Load")]
     [SerializeField] private SceneField _persisstentGameplay;
@@ -20,12 +20,12 @@ public class MainMenuManager : MonoBehaviour
     private List<AsyncOperation> _scenesToLoad = new List<AsyncOperation>();
     private void Awake()
     {
-        _loadingBarObject.SetActive(false);
+        //_loadingBarObject.SetActive(false);
     }
 
     public void StartGame()
     {
-        HideMenu();
+        //HideMenu();
 
         _loadingBarObject.SetActive(true);
 
@@ -35,13 +35,13 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine(ProgressLoadingBar());
     }
 
-    private void HideMenu()
-    {
-       for(int i = 0; i < _objectToHide.Length; i++)
-        {
-            _objectToHide[i].SetActive(false);
-        }
-    }
+    //private void HideMenu()
+    //{
+    //   for(int i = 0; i < _objectToHide.Length; i++)
+    //    {
+    //        _objectToHide[i].SetActive(false);
+    //    }
+    //}
 
     private IEnumerator ProgressLoadingBar()
     {
@@ -51,7 +51,7 @@ public class MainMenuManager : MonoBehaviour
             while (!_scenesToLoad[i].isDone)
             {
                 loadProgress += _scenesToLoad[i].progress ;
-                _loadingBar.fillAmount = loadProgress / _scenesToLoad.Count;
+                //_loadingBar.fillAmount = loadProgress / _scenesToLoad.Count;
                 yield return null;
             }
         }

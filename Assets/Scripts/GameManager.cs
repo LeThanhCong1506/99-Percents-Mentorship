@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private bool _isGameEnd;
     private bool _isGamePaused;
     public bool IsWin;
+    public bool IsWinToStopEnemy;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
+        IsWinToStopEnemy = false;
         IsWin = false;
         _userPositivePoint = 3;
     }
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Đúng! Enemy bị cảm hóa.");
             // TODO: hiệu ứng cảm hóa, thưởng điểm…
             IsWin = true;
+            IsWinToStopEnemy = true; // Đặt trạng thái thắng để dừng enemy
         }
         else
         {

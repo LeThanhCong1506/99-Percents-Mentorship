@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour
     public event Action<SongDirection[]> OnSignalDirection;
 
     private SongDirection[] currentDir;
+    private bool isMovingInDirection = false;
 
     void Start()
     {
@@ -42,7 +43,10 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        DetectPlayer();
+        if (!isMovingInDirection)
+        {
+            DetectPlayer();
+        }
     }
 
     private IEnumerator MoveBackAndForth()
@@ -58,6 +62,7 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector3 target)
     {
+
         startPos = transform.position;
         Vector3 start = transform.position;
         float elapsed = 0f;
@@ -82,7 +87,6 @@ public class EnemyController : MonoBehaviour
             transform.position = Vector3.Lerp(start, endpos, elapsed / moveDuration);
             elapsed += Time.deltaTime / 1.5f;
         }
-        transform.position = leftPos;
     }
 
     private void DetectPlayer()
@@ -105,16 +109,22 @@ public class EnemyController : MonoBehaviour
 
     public bool SignalRandomDirection()
     {
+        if (!this.enabled)
+        {
+            Debug.LogWarning("EnemyController is not enabled. Cannot signal random direction.");
+            return false;
+        }
+
         currentDir = new SongDirection[2];
 
         for (int i = 0; i < currentDir.Length; i++)
         {
-            // Chọn ngẫu nhiên một hướng từ SongDirection  
             currentDir[i] = (SongDirection)Random.Range(0, 7);
         }
 
         OnSignalDirection?.Invoke(currentDir);
-        // Khởi động hành động (di chuyển hoặc effect) theo hướng đó  
+
+        isMovingInDirection = true; // Set flag before starting coroutine
         StartCoroutine(MoveInDirection(currentDir));
 
         return true;
@@ -133,31 +143,34 @@ public class EnemyController : MonoBehaviour
 
     private IEnumerator MoveInDirection(SongDirection[] dir)
     {
-        yield return new WaitForSeconds(2f); // Đợi một chút trước khi bắt đầu di chuyển
-        for (int i = 0; i < dir.Length; i++)
-        {
-            Vector3 dirVec = DirectionToVector(dir[i]);
-            Vector3 start = transform.position;
-            Vector3 end = start + dirVec * moveDistance;
+        yield return new WaitForSeconds(2f);
 
-            float t = 0f;
-            while (t < moveDuration)
+            for (int i = 0; i < dir.Length; i++)
             {
-                t += Time.deltaTime;
-                transform.position = Vector3.Lerp(start, end, t / moveDuration);
-                yield return null;
-            }
+                Vector3 dirVec = DirectionToVector(dir[i]);
+                Vector3 start = transform.position;
+                Vector3 end = start + dirVec * moveDistance;
 
-            t = 0;
-            while (t < moveDuration)
-            {
-                t += Time.deltaTime;
-                transform.position = Vector3.Lerp(end, start, t / moveDuration);
-                yield return null;
+                float t = 0f;
+                while (t < moveDuration)
+                {
+                    t += Time.deltaTime;
+                    transform.position = Vector3.Lerp(start, end, t / moveDuration);
+                    yield return null;
+                }
+
+                t = 0;
+                while (t < moveDuration)
+                {
+                    t += Time.deltaTime;
+                    transform.position = Vector3.Lerp(end, start, t / moveDuration);
+                    yield return null;
+                }
+                yield return new WaitForSeconds(0.5f);
             }
-            // Đợi một chút trước khi di chuyển tiếp  
-            yield return new WaitForSeconds(0.5f);
-        }
+        
+        yield return new WaitForSeconds(10f); // Đợi một chút trước khi kết thúc
+        isMovingInDirection = false; // Reset flag after movement
     }
 
     private Vector3 DirectionToVector(SongDirection dir)
