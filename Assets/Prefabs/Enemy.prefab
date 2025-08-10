@@ -221,6 +221,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1169180525811776097, guid: 22c1e09c59cb9784c9a238d86dce0b48, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1169180525811776097, guid: 22c1e09c59cb9784c9a238d86dce0b48, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5274803623015922198, guid: 22c1e09c59cb9784c9a238d86dce0b48, type: 3}
       propertyPath: m_Name
       value: AngryEmotion

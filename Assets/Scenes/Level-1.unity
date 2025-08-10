@@ -1650,6 +1650,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 181115428081779947, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 181115428081779947, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 181115428081779947, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 617081698436127756, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2657942440411875817, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 56.2
@@ -1898,6 +1914,7 @@ GameObject:
   - component: {fileID: 1647855985}
   - component: {fileID: 1647855988}
   - component: {fileID: 1647855989}
+  - component: {fileID: 1647855990}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2057,6 +2074,30 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1647855990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647855984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 32
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_CropFrame: 0
+  m_GridSnapping: 0
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1001 &1688700979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2367,6 +2408,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 181115428081779947, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 181115428081779947, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2657942440411875817, guid: 0f0bf087f61f9694d8f2ddcb6e95adf0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.68
