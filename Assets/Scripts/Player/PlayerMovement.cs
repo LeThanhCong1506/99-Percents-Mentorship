@@ -129,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
         _rb.linearVelocityX = 0f;
         _animator.SetBool(IsRun, false);
         if (GameManager.Instance == null) return;
-        GameManager.Instance.IsInputEnable = false;
+        //GameManager.Instance.IsInputEnable = false;
     }
     public void StopMoving()
     {

@@ -184,7 +184,7 @@ public class PlayerDetection : MonoBehaviour
         _isPlaying = false;
         playerController.movement.UnStop();
         _songWheelController.OnPlayerWin();
-        currentEnemy.OnWinning();
+        currentEnemy?.OnWinning();
         currentEnemy = null;
         //_selected = false;
     }
