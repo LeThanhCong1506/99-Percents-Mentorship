@@ -8,7 +8,7 @@ public class SongWheelManager : MonoBehaviour
     private List<int> _selectSlices = new();
     private Vector2[] _sliceSize;
     private int newSongWheelNumber;
-    private float _currentFillAmount = 1f;
+    //private float _currentFillAmount = 1f;
     public int[] DirectionNumber => _directionNumberList.ToArray();
     private List<int> _directionNumberList;
     private int _currentDirectionIndex;

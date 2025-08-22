@@ -12,7 +12,7 @@ public class SongWheelView : MonoBehaviour
     [SerializeField] private Image[] _songNotes;
     [SerializeField] private Sprite[] _songNoteSprites;
     [SerializeField] PlayerController _playerController;
-    [SerializeField] private float _offsetY = 60f;
+    //[SerializeField] private float _offsetY = 60f;
     //private List<int> _selectSlices = new();
     public SliceView[] Slices;
     public bool WheelActive { get; private set; }

@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private float moodDeltaOnWin = 0.15f;
     [SerializeField] private float moodDeltaOnLose = 0.15f;
-    [SerializeField] private float _inputTimeout = 10f;
+    //[SerializeField] private float _inputTimeout = 10f;
 
 
     //public bool _awaitingPlayerSelect;
