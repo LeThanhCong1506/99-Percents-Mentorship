@@ -9,6 +9,7 @@ public class BossController : MonoBehaviour
     private static readonly int IsAttack = Animator.StringToHash("isAttack");
     private BossCameraController _bossCameraController;
 
+    [SerializeField] private GameObject wideCamera;
     [SerializeField] private Animator animator;
     [SerializeField] private Transform bossTrigger;
     [SerializeField] private Transform position;
@@ -29,6 +30,7 @@ public class BossController : MonoBehaviour
 
     private IEnumerator DetectProcess(PlayerController playerController)
     {
+        wideCamera.gameObject.SetActive(true);
         playerController.movement.StopMoving();
         playerController.movement.StopPlayer();
         playerController.movement.enabled = false;

@@ -60,8 +60,8 @@ public class SongWheelController : MonoBehaviour
 
     private void Update()
     {
-        if(!GameManager.Instance.IsInputEnable)
-            return;
+        //if(!GameManager.Instance.IsInputEnable)
+        //    return;
 
         if (Input.GetMouseButtonDown(1))
         {

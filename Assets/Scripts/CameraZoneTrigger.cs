@@ -18,11 +18,12 @@ public class CameraZoneTrigger : MonoBehaviour
         nextSceneCamera.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
         currentCamera = FindFirstObjectByType<CinemachineVirtualCamera>().gameObject;
-      
+        if (currentCamera.tag == "Enemy")
+            currentCamera = null;
     }
 
-    
-   
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -39,11 +40,11 @@ public class CameraZoneTrigger : MonoBehaviour
             }
             else
             {
-               CameraManager.SwitchCamera(currentCamera.GetComponent<CinemachineVirtualCamera>());
+                CameraManager.SwitchCamera(currentCamera.GetComponent<CinemachineVirtualCamera>());
                 nextSceneCamera.gameObject.SetActive(false);
                 isActive = !isActive;
             }
-           
+
 
         }
     }

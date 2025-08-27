@@ -29,6 +29,7 @@ public class MoodBarController : MonoBehaviour
     private void HandleFull()
     {
         ChangeMoodImage.sprite = moodFillImage[0]; // 100% mood
+        playerController.movement.UnlockRun();
         OnMoodMax();
         ApplyEffects(_moodValue);
         ApplyEffectForTimeWin();
@@ -37,6 +38,7 @@ public class MoodBarController : MonoBehaviour
     private void HandleCritical()
     {
         ChangeMoodImage.sprite = moodFillImage[0]; // 90% mood
+        playerController.movement.UnlockRun();
         ApplyEffects(_moodValue);
         ApplyEffectForTimeWin();
     }
@@ -53,12 +55,14 @@ public class MoodBarController : MonoBehaviour
 
     private void HandleMedium()
     {
+        playerController.movement.LockRun();
         //ChangeMoodImage.sprite = moodFillImage[2]; // 50% mood
         ChangeMoodImage.sprite = moodFillImage[2]; // 50% mood
         ApplyEffects(_moodValue);
     }
     private void HandleLow()
     {
+        playerController.movement.LockRun();
         ChangeMoodImage.sprite = moodFillImage[3]; // 30% mood
         ApplyEffects(_moodValue);
         ApplyEffectForTimeLose();
@@ -66,6 +70,7 @@ public class MoodBarController : MonoBehaviour
 
     private void HandleEmpty()
     {
+        playerController.movement.LockRun();
         ChangeMoodImage.sprite = moodFillImage[moodFillImage.Length - 1]; // 0% mood
         ApplyEffects(_moodValue);
         OnMoodMin();
@@ -103,7 +108,7 @@ public class MoodBarController : MonoBehaviour
             case < 0.5f:
                 ApplyEffectForTimeLose();
                 break;
-            case var _ when Mathf.Approximately(_moodValue, 0.5f):
+            case 0.5f:
                 HandleMedium();
                 break;
             case <= 0.75f:

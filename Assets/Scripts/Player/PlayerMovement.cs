@@ -36,6 +36,12 @@ public class PlayerMovement : MonoBehaviour
     {
         _canRun = true;
     }
+
+    public void LockRun()
+    {
+        _canRun = false;
+    }
+
     private void Update()
     {
         if (_isStop)
